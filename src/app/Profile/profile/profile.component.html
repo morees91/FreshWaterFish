@@ -1,0 +1,29 @@
+<div class="row"> 
+
+<div class="col-md">
+
+<p>First Name: {{user.FirstName}} </p>
+<p>Last Name: {{user.LastName}}</p>
+<p>Phone Number: 0{{user.PhoneNumber}}</p>
+<p>email: {{user.email}}</p>
+
+
+</div>
+
+
+<div class="col-md">
+    <p>Address: {{user.Address}} </p>
+    <p>Street: {{user.Street}}</p>
+    <p>Zip: {{user.Zip}}</p>
+    <p>Role: {{user.Role}}</p>
+
+    
+</div>
+
+
+
+</div>
+
+
+<button class="btn btn-primary" (click)="UpdateProfile()">Update Profile</button>
+
