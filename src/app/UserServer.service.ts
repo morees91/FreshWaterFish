@@ -8,12 +8,12 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class UserService {
  
-private register_Url='http://localhost:3000/users/register'
-private login_Url='http://localhost:3000/users/login'
-private updateUser_Url='http://localhost:3000/users/update-user'
-private getUsers_Url='http://localhost:3000/users/get-users'
-private logout_Url='http://localhost:3000/users/logout'
-private user_url='http://localhost:3000/users/user'
+private register_Url='https://freshwaterserver.onrender.com/users/register'
+private login_Url='https://freshwaterserver.onrender.com/users/login'
+private updateUser_Url='https://freshwaterserver.onrender.com/users/update-user'
+private getUsers_Url='https://freshwaterserver.onrender.com/users/get-users'
+private logout_Url='https://freshwaterserver.onrender.com/users/logout'
+private user_url='https://freshwaterserver.onrender.com/users/user'
 
 
 
