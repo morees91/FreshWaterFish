@@ -1,4 +1,4 @@
-import { UserService } from 'src/app/UserServer.service';
+import { UserService } from 'src/app/ClientServer/UserServer.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
 user=<user>{}
 message:string=''
+error:string=''
   constructor(private router:Router,private userserver:UserService) { }
 
   ngOnInit(): void {
@@ -19,20 +20,23 @@ message:string=''
   }
 
   Login(){
-
-  
-
-    console.log(this.user)
-
 this.userserver.Login(this.user)
 .subscribe((response)=>{
 
+if(response.status==500)
+{
+this.error=response.Message
 
- 
-    this.router.navigate(['home'])
-    console.log(response.message)
-    localStorage.setItem('user',JSON.stringify(response.user))
-  
+}else{
+
+
+//location.reload()
+
+   this.router.navigate(['home'])
+   window.location.reload()
+  console.log('login ok')
+
+}
 
 },err=>{
   console.log(err.error.message);
@@ -48,17 +52,18 @@ this.userserver.Login(this.user)
 
 
 export interface user{
+  id:number
 FirstName:string
 LastName:string
-PhoneNumber?:number,
+PhoneNumber:string
 Address:string
 Street:string
 Zip?:number
-Email:string,
-Password:string,
+Email:string
+Password:string
 Password2:string
-role:string
-
+Role:string
+Image:string
 
 
 

@@ -1,3 +1,4 @@
+import { OrderItemComponent } from './Orders/order-item/order-item.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -18,19 +19,17 @@ const routes: Routes = [
 
 
 {path:'home',component:HomeComponent},
-
 {path:'contact-us',component:ContactsUsComponent},
 {path:'login',component:LoginComponent},
 {path:'register',component:RegisterComponent},
 {path:'about-us',component:AboutUsComponent},
 {path:'orders',component:OrdersComponent},
+{path:'orders/:FishId',component:OrdersComponent},
 {path:'chat',component:ChatComponent},
 {path:'update-user',component:UpdateUserComponent},
 {path:'profile',component:ProfileComponent},
 {path:'users',component:UsersComponent},
-
-
-
+{path:'fishInfo/:FishName',component:OrderItemComponent},
 {path:'',redirectTo:'/home',pathMatch:'full'},
 
 

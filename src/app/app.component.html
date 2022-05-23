@@ -5,7 +5,7 @@
 
     <div class="col-md">
     
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" routerLink="/home">Home</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@
                 <a class="nav-link" routerLink="/chat">chat</a>
               </li>
 
-              <li class="nav-item " *ngIf="Role =='Admin'">
+              <li class="nav-item " *ngIf="Role">
                 <a class="nav-link" routerLink="/users">Users</a>
               </li>
 
@@ -60,7 +60,7 @@
                 <div  *ngIf="authenticated" >
 
                   
-                  <li><a class="dropdown-item" routerLink="/profile" >Profile</a></li>
+                  <li><a class="dropdown-item" routerLink="/profile" [state]="user" >Profile</a></li>
                   <li><a class="dropdown-item" (click)="Logout()">Logout</a></li>
 
                 </div >
@@ -81,8 +81,7 @@
       </div>
     
 
-<div class="container">
-<div class="row">
+<div class="row mt-5">
 
 <div class="col-md">
 
@@ -95,35 +94,41 @@
 
 </div>
   
-</div>  
 
 
-<div class="row">
+<div class="row navbar navbar-expand-lg navbar-light bg-light">
 
   <div class="col-md">
 
+    <div class="row links">
 
-  
-    <footer class="container">
-  
-      <div class='row Connect-Us m-2'>
-        <div class='col-md text-center' >
-          <ul class="list-group list-group-horizontal d-flex justify-content-center">
-            <li class="list-group-item text-center"><a class="text-muted" rel='noopener noreferrer' href="https://www.instagram.com/loris.nijim/" target='_blank'> <i class="fa fa-instagram mr-2"></i></a></li>
-            <li class="list-group-item text-center"><a class="text-muted" rel="noopener noreferrer" href="https://www.facebook.com/" target='_blank'><i class="fa fa-facebook-square mr-2" aria-hidden="true"></i></a></li>
-            <li class="list-group-item text-center"><a class="text-muted" rel='noopener noreferrer' href="https://www.youtube.com/channel/UCqAqgLOCIO4-ypC3qBACgVw" target='_blank'><i class="fa fa-youtube-play mr-2"></i></a></li>
-          </ul>
-      
-      
-        </div>
+      <div class="col-md">
+
+        <ul class="list-group list-group-horizontal d-flex justify-content-center">
+          <li class="list-group-item text-center"><a class="text-muted" rel='noopener noreferrer' href="https://www.instagram.com/freshwater.fish.id/?hl=en" target='_blank'> <i class="fa fa-instagram mr-2"></i></a></li>
+          <li class="list-group-item text-center"><a class="text-muted" rel="noopener noreferrer" href="https://www.facebook.com/Fresh-water-fish-225377000857378/?d=%7B%22u%22%3A100000267374899%2C%22f%22%3A1305728356435516%2C%22t%22%3A1650310278%2C%22ed%22%3A[]%7D&s=AWWZr2oBBjMV9MQKdew" target='_blank'><i class="fa fa-facebook-square mr-2" aria-hidden="true"></i></a></li>
+          <li class="list-group-item text-center"><a class="text-muted" rel='noopener noreferrer' href="https://www.youtube.com/channel/UCijpuBRpFdKmnZQI4du3z3w" target='_blank'><i class="fa fa-youtube-play mr-2"></i></a></li>
+        </ul>
       </div>
-    
-      <p class="float-end"><a href="#">Back to top</a></p>
-      <p>© 2017–2021 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-    </footer>
+    </div>
+
+    <div class="row">
+<div class="col-md">
+
+
+  <p class="float-end"><a href="#">Back to top</a></p>
+  <p class="text-center">© 2017–2021 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+
+
+</div>
+
+    </div>
+  
 
   </div>
 </div>
+
+
 
 
 

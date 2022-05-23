@@ -1,1 +1,90 @@
-<p>chat works!</p>
+
+<div class="row m-5">
+
+    <div class="col-md">
+
+        <div class="card ">
+
+            <div class="card-header">
+
+            
+                     
+
+                    <ul class="list-group list-group-horizontal overflow-auto">
+                        <li class="col-md list-group-item text-center" (click)="SelectUser(u)" *ngFor="let u of filterdList">
+                           
+                        
+                                <img class=" rounded-circle border border-dark p-1"
+                                    src="https://freshwaterfish.s3.eu-west-2.amazonaws.com/{{u.Image}}" />
+                                <p>{{u.FirstName}}</p>
+            
+                            
+                        </li>
+                       
+                      </ul>
+
+                
+             
+                
+                
+
+            </div>
+            <h3> {{chat.receiver}}</h3>
+
+            <div class="card-body">
+
+
+                <div class="row">
+
+                    <div class="col-md chatBody" #scrollBottom>
+
+
+                        <div class="card message" *ngFor="let m of filterChatList" (click)="selectedMessage(m)">
+
+                            <div class="card-header SenderOrReceiver">{{m.sender}}</div>
+
+                            <div class="card-body Message">{{m.Message}}</div>
+                            <div class="card-footer TimeStamp">{{m.TimeStamp}}</div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="card-footer">
+
+                <div class="row">
+
+                    <div class="col-md">
+
+                        <input class="form-control" type="text" placeholder="enter you message" name="Message"
+                            id="Message" [(ngModel)]="message" />
+
+
+                    </div>
+                    <div class="col-md-4">
+
+                        <button class="btn btn-primary m-2" *ngIf="!updating" (click)="SendMessage()"
+                            [disabled]="!SenderName || !message">Send</button>
+                        <button class="btn btn-primary m-2" *ngIf="updating" (click)="updateMessage()">update</button>
+
+                        <button class="btn btn-secondary" *ngIf="updating" (click)="cancelUpdate()">cancel</button>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+        <div>
+
+        </div>

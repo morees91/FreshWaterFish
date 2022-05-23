@@ -1,1 +1,51 @@
-<p>gallery works!</p>
+
+<div class="row m-5">
+
+    <div class="col-md">
+
+        <div class="card">
+<div class="card-header">FreshWater Fishes</div>
+
+<div class="card-body overflow-auto">
+
+
+    <div class="row">
+
+        <div class="col-md-3 mt-3"  *ngFor="let g of galleries" >
+    <div class="card">
+    
+        <div class="card-header">
+            
+    <p class="text-center  text-truncate" data-toggle="tooltip" data-placement="top" title={{g.FishName}}>{{g.FishName}}</p>
+        </div>
+       
+    <img class="rounded mx-auto d-block rounded-0" src={{g.FishImg}}> 
+    
+        <button class="btn btn-primary w-auto rounded-bottom rounded-0" [routerLink]="['/orders']" [state]="{g}">order</button>
+    
+        
+        
+       
+    
+    </div>
+    
+    
+    </div>
+    </div>
+    
+    
+
+</div>
+
+        </div>
+<div>
+
+
+
+</div>
+
+
+    </div>
+</div>
+
+

@@ -1,1 +1,80 @@
-<p>orders works!</p>
+<div class="row" *ngIf="item">
+
+  <div class="col-md">
+    <div class="card">
+
+<div class="card-header"><h3>{{itemName}}</h3></div>
+
+<div class="card-body">
+
+  <div class="row">
+
+    <div class="col-md">
+
+
+
+      <img class="rounded mx-auto d-block" src={{ItemImage}}>
+
+
+    </div>
+
+    <div class="col-md">
+
+<h4> details</h4>
+
+  <p class="text-center ">{{itemDetails}}</p>
+
+
+
+  <h3 class="text-center">Cost: {{itemPrice}}</h3>
+
+  
+<div class="col-md">
+  <button class="btn btn-primary rounded mx-auto d-block p-2 " (click)="OrderFish(item)">order</button>
+
+
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+      
+    </div>
+
+
+</div>
+
+<div class="row m-5">
+
+  <div class="col-md">
+
+<div class="card">
+
+<div class="card-header">My orders</div>
+  <div class="card-body overflow-auto">
+
+    
+<table class="table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">Order Name</th>
+      <th scope="col">Order Price</th>
+      <th scope="col">Order Date Bought</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of OrderList" class="text-center">
+      <td>{{o.FishName}} {{o.productName}}</td>
+      <td>{{o.product_Price}} {{o.fish_Price}}</td>
+      <td>{{o.Bought_dt}}</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+  
+</div>
+
+  </div>
+</div>

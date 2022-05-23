@@ -1,4 +1,5 @@
-import { UserService } from 'src/app/UserServer.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from 'src/app/ClientServer/UserServer.service';
 import { Router } from '@angular/router';
 import { user } from './../../Login/login/login.component';
 import { Component, OnInit } from '@angular/core';
@@ -10,39 +11,63 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateUserComponent implements OnInit {
 
-  updateuser=<any>{}
- _id:string=""
-  constructor(private router:Router,private userService:UserService) { }
+  updateuser = <user>{}
+  _id: string = ""
+  UserUpdate: any
+  error: string = ''
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.User()
-    .subscribe((res:any)=>{
 
-      console.log(res)
-      this._id=res._id
-
-    },err=>{
-
-      console.log(err)
+    this.updateuser = history.state.user
+    this.UserUpdate = new FormGroup({
+      FirstName: new FormControl(this.updateuser.FirstName),
+      LastName: new FormControl(this.updateuser.LastName),
+      PhoneNumber: new FormControl(this.updateuser.PhoneNumber),
+      Address: new FormControl(this.updateuser.Address),
+      profileImage: new FormControl(""),
+      street: new FormControl(this.updateuser.Street,
+        Validators.compose([
+          Validators.required
+        ])),
+      zip: new FormControl(this.updateuser.Zip),
+      Email: new FormControl(this.updateuser.Email, Validators.compose([
+        Validators.required,
+        Validators.email
+      ])),
+      password: new FormControl(''),
+      password2: new FormControl('')
     })
-  
+
+    console.log(history.state.user)
+
   }
 
 
-  UpdateUser(){
+  UpdateUser(data: any) {
 
-    console.log(this.updateuser)
+    console.log(data)
 
-this.userService.UpdateUser(this.updateuser,this._id)
-.subscribe((res)=>{
 
-  console.log(res)
 
-})
+    this.userService.UpdateUser(data, this.updateuser.id)
+      .subscribe((res) => {
 
-this.router.navigate(['profile'])
+        if (res.status == 500) {
 
-    
+          this.error = res.Message
+
+        } else {
+
+
+
+          this.router.navigate(['profile'])
+
+        }
+      })
+
+
+
   }
 
 }

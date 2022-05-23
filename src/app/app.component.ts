@@ -1,10 +1,12 @@
+import { ChatServerService } from './ClientServer/chat-server.service';
 import { user } from './Login/login/login.component';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Emitters } from './emitters/emitters';
-import { HttpClient } from '@angular/common/http';
-import { UserService } from 'src/app/UserServer.service';
+import { UserService } from 'src/app/ClientServer/UserServer.service';
 import { Component } from '@angular/core';
 
+import {  SocketIoConfig } from 'ngx-socket-io';
+import { Socket } from 'ngx-socket-io';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,24 +15,51 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'FreshWaterApp';
   FullName: string = ""
+  user = <user>{}
   class: string = ''
   authenticated = false
-  Role:string=""
-
-  constructor(private server: UserService, private router: Router) { }
+  Role = false
+  config: SocketIoConfig = {
+    url: '',
+    options: {
+      transports: ['websockt']
+    }
+  }
+  constructor
+  (private server: UserService,
+     private router: Router, private ActiveRouter: ActivatedRoute,
+     private socket:Socket,private chatserver: ChatServerService) { }
 
   ngOnInit(): void {
 
-    this.router.navigate(['home'])
+   
+   
+    this.server.User()
+    .subscribe((res: any) => {
+
+     
+
+      this.chatserver.connectedUser(res)
+
+      this.user = res
+
+      this.FullName = res[0].FirstName + "." + res[0].LastName[0]
+      res[0].Role == 'Admin' ? this.Role = true : this.Role = false
+
+      this.router.navigate(['home'])
+
+
+
+    })
+
     Emitters.authEmitter.subscribe(
       (auth: boolean) => {
 
         this.authenticated = auth
-        this.getUser()
+
 
       }
     )
-
   }
   Logout() {
 
@@ -39,30 +68,20 @@ export class AppComponent {
 
         this.authenticated = false
 
-
+        this.getUser()
         this.router.navigate(['home'])
+
 
       })
 
 
   }
 
+
+
   getUser() {
 
-    this.server.User()
-      .subscribe((res: any) => {
-
-        console.log(res)
-
-        this.FullName = res.FirstName + "." + res.LastName[0]
-        this.Role=res.Role
-     
-
-      }, (err) => {
-
-        console.log(err)
-
-      })
+  
 
   }
 

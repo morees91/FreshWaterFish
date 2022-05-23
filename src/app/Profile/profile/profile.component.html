@@ -1,29 +1,72 @@
-<div class="row"> 
+<div class="row m-5">
 
-<div class="col-md">
+    <div class="col-md">
 
-<p>First Name: {{user.FirstName}} </p>
-<p>Last Name: {{user.LastName}}</p>
-<p>Phone Number: 0{{user.PhoneNumber}}</p>
-<p>email: {{user.email}}</p>
+
+
+        <div class="card">
+            <div class="card-header">My Profile</div>
+             <div class="card-body">
+              
+             
+     
+                 <div class="col-md">
+     
+                     <img src={{user.Image}} class="" alt="profileimage">
+                 </div>
+         
+                 <div class="col-md">
+         
+                     <div class="row">
+         
+         
+                         <div class="col-md">
+                             <p>First Name: {{user.FirstName}} </p>
+                             <p>Last Name: {{user.LastName}}</p>
+                             <p>Phone Number: 0{{user.PhoneNumber}}</p>
+                             <p>email: {{user.Email}}</p>
+         
+         
+                         </div>
+         
+         
+                         <div class="col-md">
+                             <p>Address: {{user.Address}} </p>
+                             <p>Street: {{user.Street}}</p>
+                             <p>Zip: {{user.Zip}}</p>
+                             <p>Role: {{user.Role}}</p>
+         
+         
+                         </div>
+         
+         
+         
+         
+                     </div>
+         
+         
+         
+                 </div>
+             </div>
+             <div class="card-footer">
+     
+                 <div class="row">
+     
+                     <div class="col-md">
+              
+              
+                         <button class="btn btn-primary float-end" [routerLink]="['/update-user']" [state]='{user}'>Update Profile</button>
+              
+                     </div>    
+                 </div>
+                     
+     
+     
+             </div>
+           </div>
+     
+
+    </div>
 
 
 </div>
-
-
-<div class="col-md">
-    <p>Address: {{user.Address}} </p>
-    <p>Street: {{user.Street}}</p>
-    <p>Zip: {{user.Zip}}</p>
-    <p>Role: {{user.Role}}</p>
-
-    
-</div>
-
-
-
-</div>
-
-
-<button class="btn btn-primary" (click)="UpdateProfile()">Update Profile</button>
-

@@ -1,4 +1,5 @@
-<div class="row">
+<div class="row m-5">
+
 
     <div class="col-md text-center">
 
@@ -6,7 +7,7 @@
 
         <h1>how can we help you?</h1>
 
-        <p class="mt-5">
+        <p class="m-5">
 
             Learn more about our shipping & delivery options, setting up a PetSmart account, returns & refunds, payment
             options and more. Can’t find what you’re looking for? Contact customer care at 1-888-839-9638 or send us an
@@ -16,38 +17,66 @@
 
         </p>
 
+  
+
+
+</div>
+
+
+
+</div>
+
+
+<div class="row m-5">
+
+<div class="col-md"></div>
+
+
+
+<form [formGroup]="contactUsForm" (ngSubmit)="ContactUs(contactUsForm.value)">
+
+
+
+
+    <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter Your email" formControlName="Email">
     </div>
+    
+    
+    
+    <div class="form-group">
+        <label for="PhoneNumber">Phone Number</label>
+        <input type="text" class="form-control" id="PhoneNumber" placeholder="Enter Your Phone Number" formControlName="PhoneNumber"> 
+    </div>
+    
+    
+    <div class="form-group">
+        <label for="officeNumber">office number</label>
+        <input type="text" class="form-control" id="officeNumber" placeholder="Enter Your office Number" formControlName="OfficeNumber">
+    </div>
+    
+    
+    <div class="form-group">
+        <label for="CompanyEmail">company Email</label>
+        <input type="text" class="form-control" id="CompanyEmail" placeholder="Enter Your Company Email" formControlName="CompanyEmail">  
+    </div>
+    
+    <div class="form-group">
+        <label for="subject">subject</label>
+        <input type="text" class="form-control" id="subject" placeholder="Enter Your subject" formControlName="Subject">
+    </div>
+    
+ 
+
+    <p class="text-danger">{{Error}}</p>
+
+    <input type="submit" [disabled]="!contactUsForm.valid" value="send" class="btn btn-primary float-end m-3" />
+
+
+
+
+</form>
+
 
 </div>
-<div class="form-group">
-    <label for="email">email</label>
-    <input type="email" class="form-control" id="email" placeholder="Enter Your email"[(ngModel)]="contacts.Email">
-</div>
-
-
-
-<div class="form-group">
-    <label for="subject">subject</label>
-    <input type="text" class="form-control" id="subject" placeholder="Enter Your subject" [(ngModel)]="contacts.Subject">
-</div>
-
-
-
-<div class="form-group">
-    <label for="PhoneNumber">Phone Number</label>
-    <input type="text" class="form-control" id="PhoneNumber" placeholder="Enter Your Phone Number" [(ngModel)]="contacts.PhoneNumber"> 
-</div>
-
-
-<div class="form-group">
-    <label for="officeNumber">office number</label>
-    <input type="text" class="form-control" id="officeNumber" placeholder="Enter Your office Number" [(ngModel)]="contacts.OfficeNumber">
-</div>
-
-
-<div class="form-group">
-    <label for="CompanyEmail">company Email</label>
-    <input type="text" class="form-control" id="CompanyEmail" placeholder="Enter Your Company Email" [(ngModel)]="contacts.CompanyEmail">  
-</div>
-
-<button class="btn btn-primary float-end m-3" (click)="ContactUs()">Send</button>

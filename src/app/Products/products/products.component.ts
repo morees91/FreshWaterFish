@@ -1,3 +1,5 @@
+import { ProductsService } from './../../ClientServer/products.service';
+import { UserService } from 'src/app/ClientServer/UserServer.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,18 +9,58 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private server:ProductsService,private userServer:UserService) { }
 
+
+  products:any=''
+  Role=false
+ 
   ngOnInit(): void {
+
+    this.userServer.User().subscribe((res: any) => {
+
+      this.Role = res.Role
+      res[0].Role=='Admin'?this.Role=true:this.Role=false
+  
+    }, err => {
+      console.log(err)
+   
+    })
+
+    this.GetProducts()
+  }
+
+
+  GetProducts(){
+
+
+    this.server.Getproducts()
+    .subscribe((res:any)=>{
+
+      console.log(res)
+
+      this.products=res.productsData
+
+
+    })
+
+
+  }
+
+  OrderProduct(){
+
+
+    
+
   }
 
 }
 
 
-export interface fish{
 
-FishName:string
-FishDetails:string
-FishPrice?:number
-FishImage:string,
+
+export interface product{
+  ProductName:string
+  ProductImage:string,
+ 
 }
