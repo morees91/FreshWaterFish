@@ -8,8 +8,8 @@ import { fish } from '../Gallery/gallery/gallery.component';
 export class GalleryService {
 
 
-  private getgalleries='http://localhost:3000/gallery/get-galleries'
-  private addgalleries='http://localhost:3000/gallery/insert-galleries'
+  private getgalleries='https://freshwaterfish91.herokuapp.com/gallery/get-galleries'
+  private addgalleries='https://freshwaterfish91.herokuapp.com/gallery/insert-galleries'
   private updategalleries=""
   
 

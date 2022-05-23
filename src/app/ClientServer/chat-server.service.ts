@@ -10,10 +10,10 @@ import { Injectable } from '@angular/core';
 export class ChatServerService {
   
   
-    private getChatdata='http://localhost:3000/chat/getChatdata'
-    private savechatdata='http://localhost:3000/chat/savechatdata'
-    private updatedchatdata="http://localhost:3000/chat/updatedchatdata"
-    private deletechatdata="http://localhost:3000/chat/deletechatdata"
+    private getChatdata='https://freshwaterfish91.herokuapp.com/chat/getChatdata'
+    private savechatdata='https://freshwaterfish91.herokuapp.com/chat/savechatdata'
+    private updatedchatdata="https://freshwaterfish91.herokuapp.com/chat/updatedchatdata"
+    private deletechatdata="https://freshwaterfish91.herokuapp.com/chat/deletechatdata"
 
     
 

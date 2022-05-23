@@ -8,8 +8,8 @@ import { Injectable } from '@angular/core';
 export class OrderService {
 
   
-private GetOrders="http://localhost:3000/orders/get-orders"
-private InsertOrders="http://localhost:3000/orders/insert-orders"
+private GetOrders="https://freshwaterfish91.herokuapp.com/orders/get-orders"
+private InsertOrders="https://freshwaterfish91.herokuapp.com/orders/insert-orders"
 
   constructor(private http:HttpClient) { }
 

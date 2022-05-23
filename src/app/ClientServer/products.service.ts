@@ -6,8 +6,8 @@ import { product } from '../Products/products/products.component';
 })
 export class ProductsService {
 
-private GetProducts="http://localhost:3000/product/get-products"
-private addProducts="http://localhost:3000/product/insert-products"
+private GetProducts="https://freshwaterfish91.herokuapp.com/product/get-products"
+private addProducts="https://freshwaterfish91.herokuapp.com/product/insert-products"
 
 
   

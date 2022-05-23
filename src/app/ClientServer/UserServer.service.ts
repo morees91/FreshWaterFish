@@ -7,15 +7,15 @@ import { user } from '../Login/login/login.component';
 })
 export class UserService {
  
-private register_Url='http://localhost:3000/users/register'
-private login_Url='http://localhost:3000/users/login'
-private updateUser_Url='http://localhost:3000/users/update-user'
-private updateRole_Url='http://localhost:3000/users/update-role'
-private getUsers_Url='http://localhost:3000/users/get-users'
-private get_contactUs='http://localhost:3000/users/get-contactUs'
-private logout_Url='http://localhost:3000/users/logout'
-private user_url='http://localhost:3000/users/user'
-private deleteUser_url='http://localhost:3000/users/delete-user'
+private register_Url='https://freshwaterfish91.herokuapp.com/users/register'
+private login_Url='https://freshwaterfish91.herokuapp.com/users/login'
+private updateUser_Url='https://freshwaterfish91.herokuapp.com/users/update-user'
+private updateRole_Url='https://freshwaterfish91.herokuapp.com/users/update-role'
+private getUsers_Url='https://freshwaterfish91.herokuapp.com/users/get-users'
+private get_contactUs='https://freshwaterfish91.herokuapp.com/users/get-contactUs'
+private logout_Url='https://freshwaterfish91.herokuapp.com/users/logout'
+private user_url='https://freshwaterfish91.herokuapp.com/users/user'
+private deleteUser_url='https://freshwaterfish91.herokuapp.com/users/delete-user'
 
 
 
@@ -108,7 +108,7 @@ console.log(formParams.get('file'))
 
   ContactUs(contact: contacts) {
 
-    return this.http.post<any>('http://localhost:3000/users/contact-us', {
+    return this.http.post<any>('https://freshwaterfish91.herokuapp.com/users/contact-us', {
       Email: contact.Email,
       Subject: contact.Subject,
       PhoneNumber: contact.PhoneNumber,
