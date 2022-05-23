@@ -6,7 +6,6 @@ import { AppRoutingModule,routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-import { OrderItemComponent } from './Orders/order-item/order-item.component';
 
 
 const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {} };
@@ -14,7 +13,6 @@ const config: SocketIoConfig = { url: 'http://localhost:3000/', options: {} };
   declarations: [
     AppComponent,
  routingComponents,
- OrderItemComponent,
   ],
   imports: [
     BrowserModule,
