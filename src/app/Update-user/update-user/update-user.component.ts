@@ -12,6 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class UpdateUserComponent implements OnInit {
 
   updateuser = <user>{}
+  message:string=""
   _id: string = ""
   UserUpdate: any
   error: string = ''
@@ -59,9 +60,17 @@ export class UpdateUserComponent implements OnInit {
 
         } else {
 
+console.log(res)
 
+this.message="Profile Updated"
+this.error=""
 
-          this.router.navigate(['profile'])
+setTimeout(()=>{
+
+  this.router.navigate(['profile'])
+
+},3000)
+    
 
         }
       })

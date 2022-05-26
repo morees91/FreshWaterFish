@@ -20,11 +20,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
    
-    this.server.User().subscribe((res: any) => {
+    this.server.User(sessionStorage.getItem('token')).subscribe((res: any) => {
 
-      console.log(res[0])
+      console.log(res.data[0])
 
-this.loggedUser=res[0]
+this.loggedUser=res.data[0]
+
    
 
       Emitters.authEmitter.emit(true)

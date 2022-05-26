@@ -17,10 +17,12 @@ export class ProductsComponent implements OnInit {
  
   ngOnInit(): void {
 
-    this.userServer.User().subscribe((res: any) => {
+    this.userServer.User(sessionStorage.getItem('token')).subscribe((res: any) => {
 
-      this.Role = res.Role
-      res[0].Role=='Admin'?this.Role=true:this.Role=false
+      console.log(res)
+      
+     
+      res.data[0].Role=='Admin'?this.Role=true:this.Role=false
   
     }, err => {
       console.log(err)

@@ -33,21 +33,23 @@ export class AppComponent {
   ngOnInit(): void {
 
    
-   
-    this.server.User()
+    console.log('app componant')
+   console.log('token',sessionStorage.getItem('token'))
+    this.server.User(sessionStorage.getItem('token'))
     .subscribe((res: any) => {
 
-     
-
       this.chatserver.connectedUser(res)
-
-      this.user = res
-
-      this.FullName = res[0].FirstName + "." + res[0].LastName[0]
-      res[0].Role == 'Admin' ? this.Role = true : this.Role = false
-
-      this.router.navigate(['home'])
-
+      if(res.status==200)
+      {
+        
+        console.log(res)
+        
+  this.user = res.data[0]
+  this.FullName = res.data[0].FirstName + "." + res.data[0].LastName[0]
+  res.data[0].Role == 'Admin' ? this.Role = true : this.Role = false
+  console.log(this.FullName)
+  this.router.navigate(['home'])
+}
 
 
     })
@@ -63,13 +65,23 @@ export class AppComponent {
   }
   Logout() {
 
+
+  
+
     this.server.logout()
       .subscribe((res) => {
+        console.log(res)
+        if(res.status==200)
+        {
+          
+                  this.authenticated = false
 
-        this.authenticated = false
 
-        this.getUser()
-        this.router.navigate(['home'])
+          sessionStorage.removeItem('token')
+          window.location.reload()
+          this.getUser()
+          // this.router.navigate(['home'])
+        }
 
 
       })

@@ -1,3 +1,4 @@
+import { FormGroup, FormControl } from '@angular/forms';
 import { OrderService } from './../../ClientServer/order.service';
 import { UserService } from 'src/app/ClientServer/UserServer.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +17,9 @@ export class OrdersComponent implements OnInit {
   constructor(private router: Router, private UserService: UserService, private OrderService: OrderService) { }
 
   item :any
+  message:string=""
   order=<order>{}
+  quantity:any
   itemName:String=""
   ItemImage:String=""
   itemDetails:string=""
@@ -26,6 +29,7 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
 
     console.log(history.state)
+
 if(history.state.g)
 {
 
@@ -59,7 +63,7 @@ this.itemPrice=history.state.p.product_Price
   }
 
   loggedUser() {
-    this.UserService.User().subscribe((res: any) => {
+    this.UserService.User(sessionStorage.getItem('token')).subscribe((res: any) => {
       this.user = res[0]
        this.order.UserId = this.user.id
 
@@ -73,8 +77,9 @@ this.itemPrice=history.state.p.product_Price
     console.log(item)
     this.order.FishId = item.id
 
+    console.log(this.quantity)
     console.log(this.order)
-    this.OrderService.Insertorders(this.order).subscribe((res: any) => {
+    this.OrderService.Insertorders(this.order,this.quantity).subscribe((res: any) => {
 
      
 
@@ -84,8 +89,17 @@ this.itemPrice=history.state.p.product_Price
 
       } else {
 
+this.message="Order Submited"
 
-          this.router.navigate(['home'])
+
+setTimeout(()=>{
+
+
+       this.router.navigate(['home'])
+
+
+},3000)
+        console.log(res)
 
       }
 

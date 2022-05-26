@@ -18,12 +18,12 @@ private InsertOrders="https://freshwaterfish91.herokuapp.com/orders/insert-order
 
   }
 
-  Insertorders(order:order){
+  Insertorders(order:order,quantity:number){
 
     console.log(order)
 
 
-    return this.http.post(this.InsertOrders,{order})
+    return this.http.post(this.InsertOrders,{order,quantity})
 
   }
 }

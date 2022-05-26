@@ -1,7 +1,7 @@
 import { UserService } from './../../ClientServer/UserServer.service';
 import { GalleryService } from './../../ClientServer/gallery.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -13,21 +13,35 @@ export class GalleryComponent implements OnInit {
 galleries: any = ''
 FormAddFish:any;
 Role=false
+islogged:boolean=false
+
 connectedUser:any
-  constructor(private server:GalleryService,private userServer:UserService,private router:ActivatedRoute) { }
+  constructor(private server:GalleryService,private userServer:UserService,private router:ActivatedRoute ,private route:Router) { }
 
   ngOnInit(): void {
 
 
- 
     this.GetFishs()
 
 
   }
-  OrderFish(fish:fish){
+  OrderFish(){
 
+
+
+    if(sessionStorage.getItem('token'))
+    {
+
+      this.islogged=true
+    }else{
+
+      this.islogged=false
+
+  
+      
+    }
     
-    console.log(fish)
+    
   }
 
   

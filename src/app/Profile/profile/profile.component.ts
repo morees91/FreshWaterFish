@@ -45,11 +45,11 @@ export class ProfileComponent implements OnInit,OnChanges {
   getuser(){
 
 console.log("updated user")
-this.userServe.User().subscribe( (res:any) => { 
+this.userServe.User(sessionStorage.getItem('token')).subscribe( (res:any) => { 
   
   console.log('got user from server',res)
-  this.user=res[0]
-  this.user.Image='https://freshwaterfish.s3.eu-west-2.amazonaws.com/'+res[0].Image
+  this.user=res.data[0]
+  this.user.Image='https://freshwaterfish.s3.eu-west-2.amazonaws.com/'+res.data[0].Image
   // nextHandler
   
   

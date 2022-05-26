@@ -29,7 +29,7 @@ export class UsersComponent implements OnInit {
 
   CurrentUser() {
 
-    this.server.User().subscribe((user: any) => {
+    this.server.User(sessionStorage.getItem('token')).subscribe((user: any) => {
 
       if (user[0].Role == 'Admin') {
 

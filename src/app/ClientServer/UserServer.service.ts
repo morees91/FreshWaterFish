@@ -34,17 +34,18 @@ private deleteUser_url='https://freshwaterfish91.herokuapp.com/users/delete-user
 
    logout(){
 
+    
     return this.http.post<any>(this.logout_Url,{
-      withCredentials:true
+      withCredentials:true,
     })
 
 
    }
 
 
-User(){
+User(token:any){
 
- return this.http.get(this.user_url,{withCredentials:true})
+ return this.http.post(this.user_url,{token},{withCredentials:true})
 
 
 

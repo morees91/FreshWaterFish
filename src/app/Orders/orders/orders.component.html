@@ -28,15 +28,27 @@
 
   <h3 class="text-center">Cost: {{itemPrice}}</h3>
 
+   
+    <div class="form-group">
+      <label for="quantity">quantity</label>
+
+      <input type="number" class="form-control" name="quantity"  [(ngModel)]="quantity"
+          id="quantity" placeholder="enter quantity">
+  </div>
+
+  
   
 <div class="col-md">
   <button class="btn btn-primary rounded mx-auto d-block p-2 " (click)="OrderFish(item)">order</button>
 
 
 </div>
+<p>{{message}}</p>
+
 
 </div>
 </div>
+
 </div>
 
 </div>
@@ -62,6 +74,8 @@
       <th scope="col">Order Name</th>
       <th scope="col">Order Price</th>
       <th scope="col">Order Date Bought</th>
+      <th scope="col">quantity</th>
+
     </tr>
   </thead>
   <tbody>
@@ -69,6 +83,7 @@
       <td>{{o.FishName}} {{o.productName}}</td>
       <td>{{o.product_Price}} {{o.fish_Price}}</td>
       <td>{{o.Bought_dt}}</td>
+      <td>{{o.quantity}}</td>
     </tr>
   </tbody>
 </table>

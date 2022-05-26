@@ -1,114 +1,154 @@
-<div class="row">
-<form [formGroup]="formData" (ngSubmit)="Register(formData.value)">
-    <div class="col-md">
+<div class="row m-3 container-fluid">
 
-<div class="row">
+    <div class="col-md justify-content-center">
+        <div class="card ">
 
-<div class="col-md">
+            <div class="card-header">Registration</div>
 
-    <div class="form-group">
-        <label for="FirstName">First Name</label>
-        <input type="text" class="form-control" name="FirstName" formControlName="FirstName" id="FirstName" placeholder="Enter your First Name">
-    </div>
-
-</div>
-<div class="col-md">
-
-    <div class="form-group">
-        <label for="LastName">Last Name</label>
-        <input type="text" class="form-control" id="LastName" name="LastName" formControlName="LastName" placeholder="Enter your Last Name" >
-    </div>
-
-</div>
-
- 
-</div>
-       
-        <div class="form-group">
-            <label for="PhoneNumber">Phone Number</label>
-            <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" formControlName="PhoneNumber" placeholder="Enter your Phone Number">
-        </div>
-
-        <div class="row">
-
-            <div class="col-md">
-
-                <div class="form-group">
-                    <label for="Address">Address</label>
-                    <input type="text" class="form-control" id="Address" name="Address" formControlName="Address" placeholder="Enter Address" >
-                </div>
-
-            </div>
-
-
-            <div class="col-md">
-
-                <div class="form-group">
-                    <label for="Street">street</label>
-                    <input type="text" class="form-control" id="Street" name="Street"  formControlName="Street" placeholder="Enter street" >
-                </div>
-
-            </div>
-
-
-            <div class="col-md">
-
-                <div class="form-group">
-                    <label for="Zip">zip</label>
-                    <input type="text" class="form-control" id="Zip" name="Zip" formControlName="Zip" placeholder="Enter zip" >
-                </div>
-
-
-            </div>
-
-        </div>
-
- 
-        
-        <div class="form-group">
-            <label for="Email">email</label>
-            <input type="email" class="form-control" id="Email" formControlName="Email" name="Email" placeholder="Enter Email">
-        </div>
-
-        <div class="row">
-
-<div class="col-md">
-
-
-    <div class="form-group">
-        <label for="Password">Password</label>
-        <input type="password" class="form-control" id="Password" name="Password" formControlName="Password" placeholder="Enter Password">
-    </div>
-
-</div>
-
-<div class="col-md">
-
-    <div class="form-group">
-        <label for="Password">Password Again</label>
-        <input type="password" class="form-control" id="Password2" name="Password2" formControlName="Password2" placeholder="Enter Password Again" >
-    </div>
-
-</div>
-
-
-
-        </div>
-
-
-        <div class="form-group">
             
-                    <label for="formFile" class="form-label">upload profile picture </label>
-                    <input class="form-control" type="file" id="formFile"  name="image" (change)="FileChange($event)">
-          
+
+            <form [formGroup]="formData" class="" (ngSubmit)="Register(formData.value)">
+                <div class="col-md m-3">
+
+                    <div class="row">
+
+                        <div class="col-md">
+
+                            <div class="form-group">
+                                <label for="FirstName">First Name</label>
+                                <input type="text" class="form-control" name="FirstName" formControlName="FirstName"
+                                    id="FirstName" placeholder="Enter your First Name">
+                            </div>
+
+                        </div>
+                        <div class="col-md">
+
+                            <div class="form-group">
+                                <label for="LastName">Last Name</label>
+                                <input type="text" class="form-control" id="LastName" name="LastName"
+                                    formControlName="LastName" placeholder="Enter your Last Name">
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="PhoneNumber">Phone Number</label>
+                        <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber"
+                            formControlName="PhoneNumber" placeholder="Enter your Phone Number">
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md">
+
+                            <div class="form-group">
+                                <label for="Address">Address</label>
+                                <input type="text" class="form-control" id="Address" name="Address"
+                                    formControlName="Address" placeholder="Enter Address">
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md">
+
+                            <div class="form-group">
+                                <label for="Street">street</label>
+                                <input type="text" class="form-control" id="Street" name="Street"
+                                    formControlName="Street" placeholder="Enter street">
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-md">
+
+                            <div class="form-group">
+                                <label for="Zip">zip</label>
+                                <input type="text" class="form-control" id="Zip" name="Zip" formControlName="Zip"
+                                    placeholder="Enter zip">
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="Email">email</label>
+                        <input type="email" class="form-control" id="Email" formControlName="Email" name="Email"
+                            placeholder="Enter Email">
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md">
+
+
+                            <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="password" class="form-control" id="Password" name="Password"
+                                    formControlName="Password" placeholder="Enter Password">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md">
+
+                            <div class="form-group">
+                                <label for="Password">Password Again</label>
+                                <input type="password" class="form-control" id="Password2" name="Password2"
+                                    formControlName="Password2" placeholder="Enter Password Again">
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="formFile" class="form-label">upload profile picture </label>
+                        <input class="form-control" type="file" id="formFile" name="image"
+                            (change)="FileChange($event)">
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="card-footer">
+
+                    <div class="row">
+
+                        <div class="col-md">
+
+
+
+                            <p class="text-danger">{{Error}}</p>
+                            <p class="">{{message}}</p>
+
+
+                            <input type="submit" [disabled]="!formData.valid" value="Register"
+                                class="btn btn-primary float-end m-3" />
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+
         </div>
 
-        <p class="text-danger">{{Error}}</p>
-
-        <input type="submit" [disabled]="!formData.valid"  value="Register" class="btn btn-primary float-end m-3"/>
-
-
-
     </div>
-</form>
+
 </div>

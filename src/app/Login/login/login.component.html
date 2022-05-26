@@ -1,33 +1,55 @@
-<div class="row">
+<div class="row m-5">
 
-  <div class="col-md-6 mx-auto">
+  <div class="col-md justify-content-center">
 
-      <div class="form-group">
+    <div class="card">
+
+      <div class="card-header">Login User</div>
+
+      <div class="card-body">
+
+        <div class="form-group">
           <label for="email">email</label>
           <input type="email" class="form-control" id="email" placeholder="Enter email" [(ngModel)]="user.Email">
+        </div>
+
+        <div class="row">
+
+          <div class="col-md">
+
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Enter Password"
+                [(ngModel)]="user.Password">
+            </div>
+
+          </div>
+
+
+
+
+        </div>
+
       </div>
 
-      <div class="row">
+      <div class="card-footer">
 
-<div class="col-md">
+        <div class="row">
+
+          <div class="col-md">
+            <button class="btn btn-primary float-end m-3" (click)="Login()">Login</button>
+
+            <p class="text-danger">{{error}}</p>
+            <p class="">{{message}}</p>
 
 
-  <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" class="form-control" id="password" placeholder="Enter Password" [(ngModel)]="user.Password">
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
-
-</div>
-
-
-
-
-</div>
-
-
-
-      <button  class="btn btn-primary float-end m-3" (click)="Login()">Login</button>
-
-      <p class="text-danger">{{error}}</p>
-
-</div>

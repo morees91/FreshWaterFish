@@ -74,7 +74,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   LoggedUser() {
 
-    this.server.User().subscribe((res: any) => {
+    this.server.User(sessionStorage.getItem('token')).subscribe((res: any) => {
 
 
       this.chat.SenderId = res[0].id
