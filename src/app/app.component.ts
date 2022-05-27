@@ -33,8 +33,7 @@ export class AppComponent {
   ngOnInit(): void {
 
    
-    console.log('app componant')
-   console.log('token',sessionStorage.getItem('token'))
+
     this.server.User(sessionStorage.getItem('token'))
     .subscribe((res: any) => {
 

@@ -73,11 +73,7 @@ console.log(formParams.get('file'))
   Login(user: user) {
 
 
-    return this.http.post<any>(this.login_Url, {Email: user.Email,Password: user.Password},
-      {
-        withCredentials:true
-        
-      })
+    return this.http.post<any>(this.login_Url, {Email: user.Email,Password: user.Password})
     
 
   }
