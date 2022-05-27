@@ -45,7 +45,7 @@ private deleteUser_url='https://freshwaterfish91.herokuapp.com/users/delete-user
 
 User(token:any){
 
- return this.http.post(this.user_url,{token},{withCredentials:true})
+ return this.http.post(this.user_url,{token})
 
 
 
