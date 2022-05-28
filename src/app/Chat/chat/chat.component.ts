@@ -30,9 +30,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   filterChatList: chat[] = []
   updating: boolean = false
   ReceviedMessage: any
- 
+  
+
   ngOnInit(): void {
     this.LoggedUser();
+    this.Getusers()
     this.chatserver.Connection()
     this.getChatList();
     this.scrollToBottom();
@@ -70,12 +72,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   LoggedUser() {
+   
 
     this.server.User(sessionStorage.getItem('token')).subscribe((res: any) => {
 
 
-      this.chat.SenderId = res[0].id
-      this.chat.sender = res[0].FirstName + " " + res[0].LastName
+      this.chat.SenderId = res.data[0].id
+      this.chat.sender = res.data[0].FirstName + " " + res.data[0].LastName
+
       this.chatserver.connectedUser(res)
       this.Getusers();
 

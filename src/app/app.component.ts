@@ -25,8 +25,7 @@ export class AppComponent {
       transports: ['websockt']
     }
   }
-  constructor
-  (private server: UserService,
+  constructor(private server: UserService,
      private router: Router, private ActiveRouter: ActivatedRoute,
      private socket:Socket,private chatserver: ChatServerService) { }
 
