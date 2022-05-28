@@ -11,7 +11,10 @@ import { Socket } from 'ngx-socket-io';
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
 
-  constructor(private server: UserService, private socket: Socket, private chatserver: ChatServerService) { }
+  constructor(private server: UserService, private socket: Socket, private chatserver: ChatServerService) { 
+
+
+  }
 
 
   @ViewChild('scrollBottom')
@@ -27,13 +30,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   filterChatList: chat[] = []
   updating: boolean = false
   ReceviedMessage: any
-  config: SocketIoConfig = {
-    url: '',
-    options: {
-      transports: ['websockt']
-    }
-  }
-
+ 
   ngOnInit(): void {
     this.LoggedUser();
     this.chatserver.Connection()
