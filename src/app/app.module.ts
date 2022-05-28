@@ -8,9 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 
-const config: SocketIoConfig = { url: 'https://freshwaterfish91.herokuapp.com', options: {
-  transports:['websocket']
-} };
+const config: SocketIoConfig = { url: 'https://freshwaterfish91.herokuapp.com/'};
 @NgModule({
   declarations: [
     AppComponent,
