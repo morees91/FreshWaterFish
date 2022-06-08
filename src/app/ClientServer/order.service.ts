@@ -13,9 +13,9 @@ export class OrderService {
 private GetOrders="https://freshwaterfish91.herokuapp.com//orders/get-orders"
 private GetCartItem="https://freshwaterfish91.herokuapp.com//orders/get-cartItems"
 
-private Insertcart="https://freshwaterfish91.herokuapp.com//orders/insert-cart"
-private InsertOrders="https://freshwaterfish91.herokuapp.com//orders/insert-order"
-private deletecartItem="https://freshwaterfish91.herokuapp.com//orders/delete-cartItem"
+private Insertcart="https://freshwaterfish91.herokuapp.com/orders/insert-cart"
+private InsertOrders="https://freshwaterfish91.herokuapp.com/orders/insert-order"
+private deletecartItem="https://freshwaterfish91.herokuapp.com/orders/delete-cartItem"
 
 
   constructor(private http:HttpClient) { }
