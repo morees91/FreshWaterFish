@@ -8,8 +8,8 @@ import { fish } from '../Gallery/gallery/gallery.component';
 export class GalleryService {
 
 
-  private getgalleries='https://freshwaterfish91.herokuapp.com/gallery/get-galleries'
-  private addgalleries='https://freshwaterfish91.herokuapp.com/gallery/insert-galleries'
+  private getgalleries='https://freshwaterfish91.herokuapp.com//gallery/get-galleries'
+  private addgalleries='https://freshwaterfish91.herokuapp.com//gallery/insert-galleries'
   private updategalleries=""
   
 
@@ -26,7 +26,7 @@ return this.http.get(this.getgalleries)
 
   AddGalleries(fish:fish){
 
-    console.log(fish)
+    
 
 return this.http.post<any>(this.addgalleries,{fish})
 

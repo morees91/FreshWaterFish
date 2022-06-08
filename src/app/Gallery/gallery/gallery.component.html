@@ -22,10 +22,13 @@
     <img class="rounded mx-auto d-block rounded-0" src={{g.FishImg}}> 
     
     
-        <button class="btn btn-primary w-auto rounded-bottom rounded-0" *ngIf="islogged" [routerLink]="['/orders']" [state]="{g}">order</button>
+        <button class="btn btn-primary w-auto rounded-bottom rounded-0" *ngIf="islogged"  [routerLink]="['/cart']" [state]="{g}">Add to 
+            cart
+        </button>
     
         
-        <button class="btn btn-primary w-auto rounded-bottom rounded-0" *ngIf="!islogged" [routerLink]="['/login']">order</button>
+        <button class="btn btn-primary w-auto rounded-bottom rounded-0" *ngIf="!islogged" [routerLink]="['/login']">Add to 
+            cart</button>
     
         
        

@@ -43,14 +43,14 @@ export class RegisterComponent implements OnInit {
     })
 
 
-    console.log(this.formData)
+    
   }
 
 
   FileChange(event: any) {
 
     this.profileImage = event.target.files[0]
-    console.log(this.profileImage)
+  
 
 
   }
@@ -72,14 +72,13 @@ export class RegisterComponent implements OnInit {
 
 
 
-          console.log(response)
           if (response.status === 500) {
 
             this.Error = response.Message
 
           } else {
 
-            console.log(response)
+   
             this.Error = ""
 
             this.message = 'User Registed'

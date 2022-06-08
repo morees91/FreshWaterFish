@@ -1,0 +1,120 @@
+
+
+
+<div class="row" *ngIf="item">
+
+    <div class="col-md">
+      <div class="card">
+  
+  <div class="card-header"><h3>{{itemName}}</h3></div>
+  
+  <div class="card-body">
+  
+    <div class="row">
+  
+      <div class="col-md">
+  
+  
+  
+        <img class="rounded mx-auto d-block" src={{cartitem.ItemImage}}>
+  
+  
+      </div>
+  
+      <div class="col-md">
+  
+  <h4> details</h4>
+  
+    <p class="text-center ">{{cartitem.itemDetails}}</p>
+  
+  
+  
+    <h3 class="text-center">Cost: {{cartitem.itemPrice}}</h3>
+  
+     
+      <div class="form-group">
+        <label for="quantity">quantity</label>
+  
+        <input type="number" class="form-control" name="quantity"  [(ngModel)]="quantity"
+            id="quantity" placeholder="enter quantity">
+    </div>
+  
+    
+    
+  <div class="col-md">
+    <button class="btn btn-primary rounded mx-auto d-block p-2 " (click)="AddToCart(item)">Add to Cart</button>
+  
+  
+  </div>
+  <p>{{addtoCartMessage}}</p>
+  
+  
+  </div>
+  </div>
+  
+  </div>
+  
+  </div>
+        
+      </div>
+  
+  
+  </div>
+
+
+
+  <div class="row" *ngIf="!item">
+
+<div class="col-md">
+  <h2>your Cart is empty</h2>
+</div>
+  </div>
+  
+
+  <div class="row m-5">
+
+    <div class="col-md">
+  
+  <div class="card">
+  
+  <div class="card-header">My cart</div>
+    <div class="card-body overflow-auto">
+  
+      
+  <table class="table">
+    <thead>
+      <tr class="text-center">
+        <th scope="col">Order Name</th>
+        <th scope="col">Order Price</th>
+        <th scope="col">quantity</th>
+  
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of cartList" class="text-center">
+         <td>{{o.FishName}} {{o.productName}}</td>
+         <td>{{o.product_Price}} {{o.fish_Price}}</td>
+        <td>{{o.quantity}}</td> 
+        <td *ngIf="deleting"><i class="bi bi-trash3" (click)="DeleteCart(o)"></i></td>
+        <td *ngIf="ordering"> <i class="bi bi-check-lg" (click)="orderItem(o)"></i></td>
+       
+      </tr>
+    </tbody>
+  </table>
+    </div>
+
+    <div class="card-footer">
+      <p>{{OrderdMessage}}</p>
+      <div class="row" >
+        <div class="col-md">
+          <button class="btn btn-danger m-2 float-end" (click)="deleting=!deleting">Delete</button>
+          <button class="btn btn-success m-2 float-end" (click)="ordering=!ordering">order</button>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+    </div>
+  </div> 

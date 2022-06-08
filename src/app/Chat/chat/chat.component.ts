@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { user } from './../../Login/login/login.component';
 import { UserService } from '../../ClientServer/UserServer.service';
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
@@ -11,7 +12,7 @@ import { Socket } from 'ngx-socket-io';
 })
 export class ChatComponent implements OnInit, AfterViewChecked {
 
-  constructor(private server: UserService, private socket: Socket, private chatserver: ChatServerService) { 
+  constructor(private server: UserService, private socket: Socket, private chatserver: ChatServerService,private router:Router) { 
 
 
   }
@@ -40,7 +41,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.scrollToBottom();
     this.socket.on('new_message', (data: any) => {
 
-      console.log(data)
       this.ReceviedMessage = data
       this.filterChatList.push(data)
 
@@ -57,8 +57,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     this.server.GetUsers().subscribe((res: any) => {
 
-      console.log(res)
-      console.log(this.chat.SenderId)
+  
       this.users = res.UsersData;
       
 
@@ -77,11 +76,21 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.server.User(sessionStorage.getItem('token')).subscribe((res: any) => {
 
 
-      this.chat.SenderId = res.data[0].id
-      this.chat.sender = res.data[0].FirstName + " " + res.data[0].LastName
+if(res.status===500)
+{
 
-      this.chatserver.connectedUser(res)
-      this.Getusers();
+  this.router.navigate(['home'])
+
+}else{
+
+  
+  this.chat.SenderId = res.data[0].id
+  this.chat.sender = res.data[0].FirstName + " " + res.data[0].LastName
+
+  this.chatserver.connectedUser(res)
+  this.Getusers();
+  
+}
 
     })
 
@@ -92,7 +101,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   SelectUser(user: any) {
 
-    console.log(user)
+  
 
 
     this.SenderName = user.FirstName
@@ -102,8 +111,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.getChatList();
     this.filterChatList = this.chatList.filter(user => this.chat.ReceiverId == user.ReceiverId || user.ReceiverId == this.chat.SenderId)
 
-    console.log(this.chat.ReceiverId)
-    console.log(this.filterChatList)
     this.chatserver.selectedUser(user.id)
 
 
@@ -112,7 +119,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   onchange(user: any) {
 
-    console.log(user)
+
 
     this.SenderName = user.FirstName
     this.chat.ReceiverId = user.id
@@ -136,7 +143,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
       this.chatList = res.ChatData
 
-      console.log(res.ChatData)
     }
     )
 
@@ -155,8 +161,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.chat.Message = this.message
 
     this.chat.TimeStamp = new Date().toString()
-    console.log(this.chat)
-
+  
     this.message = ''
     this.filterChatList.push(this.chat)
     this.chatserver.SaveChat(this.chat)
@@ -176,7 +181,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   selectedMessage(Selectedmessage: chat) {
 
     this.updating = true
-    console.log(Selectedmessage)
+  
 
 
 

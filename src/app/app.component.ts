@@ -40,12 +40,12 @@ export class AppComponent {
       if(res.status==200)
       {
         
-        console.log(res)
+     
         
   this.user = res.data[0]
   this.FullName = res.data[0].FirstName + "." + res.data[0].LastName[0]
   res.data[0].Role == 'Admin' ? this.Role = true : this.Role = false
-  console.log(this.FullName)
+
   this.router.navigate(['home'])
 }
 
@@ -68,7 +68,7 @@ export class AppComponent {
 
     this.server.logout()
       .subscribe((res) => {
-        console.log(res)
+      
         if(res.status==200)
         {
           

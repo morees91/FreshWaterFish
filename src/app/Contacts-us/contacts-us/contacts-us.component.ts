@@ -39,7 +39,7 @@ export class ContactsUsComponent implements OnInit {
     this.userservic.ContactUs(contacts)
       .subscribe((res) => {
 
-        console.log(res)
+     
         if (res.status === 500) {
           this.Error = res.Message
 

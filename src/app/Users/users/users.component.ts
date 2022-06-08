@@ -1,6 +1,7 @@
 import { user } from './../../Login/login/login.component';
 import { UserService } from 'src/app/ClientServer/UserServer.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -17,7 +18,7 @@ export class UsersComponent implements OnInit {
   clickedUser = <user>{}
   Role: string = ""
   message:string=""
-  constructor(private server: UserService) { }
+  constructor(private server: UserService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -31,12 +32,23 @@ export class UsersComponent implements OnInit {
 
     this.server.User(sessionStorage.getItem('token')).subscribe((user: any) => {
 
-      if (user[0].Role == 'Admin') {
+      if(user.status===500)
+      {
 
-        this.IsAdmin = true
-      } else {
+this.router.navigate(['home'])
 
-        this.IsAdmin = false
+      }else{
+
+
+
+        if (user[0].Role == 'Admin') {
+  
+          this.IsAdmin = true
+        } else {
+  
+          this.IsAdmin = false
+        }
+
       }
 
 
@@ -65,19 +77,18 @@ this.server.GetContactUs().subscribe((res:any)=>{
 
     this.server.updateRole(this.clickedUser, this.clickedUser.id).subscribe(res => {
 
-      console.log(res)
       this.message= res.message
 
     })
-    console.log(this.clickedUser)
+   
   }
 
 
   onchange(role: string) {
 
-    console.log(this.clicked)
+    
     this.clickedUser.Role = role
-    console.log(role)
+    
 
 
   }
@@ -86,7 +97,7 @@ this.server.GetContactUs().subscribe((res:any)=>{
 
     this.server.GetUsers().subscribe((res: any) => {
 
-      console.log(res)
+      
       this.userList = res.UsersData
 
 
@@ -99,7 +110,7 @@ this.server.GetContactUs().subscribe((res:any)=>{
   clickeduser(user: user) {
     this.clickedUser = user
 
-    console.log(this.clickedUser)
+   
     this.Role = this.clickedUser.Role
     this.clicked = true
 
@@ -111,7 +122,7 @@ this.server.GetContactUs().subscribe((res:any)=>{
 
     this.server.Deleteuser(this.clickedUser).subscribe(res => {
 
-      console.log('componant', res)
+     
 
       this.GetUsers()
 

@@ -10,10 +10,10 @@ import { Injectable } from '@angular/core';
 export class ChatServerService {
   
   
-    private getChatdata='https://freshwaterfish91.herokuapp.com/chat/getChatdata'
-    private savechatdata='https://freshwaterfish91.herokuapp.com/chat/savechatdata'
-    private updatedchatdata="https://freshwaterfish91.herokuapp.com/chat/updatedchatdata"
-    private deletechatdata="https://freshwaterfish91.herokuapp.com/chat/deletechatdata"
+    private getChatdata='https://freshwaterfish91.herokuapp.com//chat/getChatdata'
+    private savechatdata='https://freshwaterfish91.herokuapp.com//chat/savechatdata'
+    private updatedchatdata="https://freshwaterfish91.herokuapp.com//chat/updatedchatdata"
+    private deletechatdata="https://freshwaterfish91.herokuapp.com//chat/deletechatdata"
 
     
 
@@ -76,18 +76,10 @@ this.socket.emit('SendMessage',chat)
 
 UpdateChat(chat:chat){
 
-  console.log(chat)
-
-
-  console.log('chat updated')
-}
-
-DeleteChat(chat:chat){
-
-console.log('chat deleted')
-
+ 
 
 }
+
 
 
 }

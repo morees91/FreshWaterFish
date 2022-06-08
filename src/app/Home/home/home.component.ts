@@ -19,26 +19,33 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   
+    
     this.server.User(sessionStorage.getItem('token')).subscribe((res: any) => {
+     
+      if(res.status==500)
+      {
+    
+      sessionStorage.removeItem('token')
 
-      console.log(res.data[0])
-
-this.loggedUser=res.data[0]
-
-   
-
-      Emitters.authEmitter.emit(true)
-
-
-    }, err => {
-      console.log(err)
       Emitters.authEmitter.emit(false)
-    })
 
-   
+    }else{
+  
+  this.loggedUser=res.data[0]
+
+  
+      Emitters.authEmitter.emit(true)
+    }
+
+ 
 
 
-  }
+  })
+
+ 
+
+
+}
+
 
 }

@@ -1,4 +1,5 @@
 
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -14,22 +15,26 @@ import { OrdersComponent } from './Orders/orders/orders.component';
 import { UsersComponent } from './Users/users/users.component';
 import { ProductsComponent } from './Products/products/products.component';
 import { UpdateUserComponent } from './Update-user/update-user/update-user.component';
+import { CartOrdersComponent } from './cart-orders/cart-orders.component';
+
 
 const routes: Routes = [
 
 
-{path:'home',component:HomeComponent},
-{path:'contact-us',component:ContactsUsComponent},
-{path:'login',component:LoginComponent},
-{path:'register',component:RegisterComponent},
-{path:'about-us',component:AboutUsComponent},
-{path:'orders',component:OrdersComponent},
-{path:'orders/:FishId',component:OrdersComponent},
-{path:'chat',component:ChatComponent},
-{path:'update-user',component:UpdateUserComponent},
-{path:'profile',component:ProfileComponent},
-{path:'users',component:UsersComponent},
-{path:'',redirectTo:'/home',pathMatch:'full'},
+  { path: 'home', component: HomeComponent },
+  { path: 'contact-us', component: ContactsUsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'orders', component: OrdersComponent },
+  { path: 'cart/:FishId', component: OrdersComponent },
+  { path: 'chat', component: ChatComponent },
+  { path: 'update-user', component: UpdateUserComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'cart', component: CartOrdersComponent },
+
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
 
 
@@ -44,7 +49,7 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[
+export const routingComponents = [
   RegisterComponent,
   LoginComponent,
   GalleryComponent,

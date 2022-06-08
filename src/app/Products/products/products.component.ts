@@ -9,60 +9,74 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private server:ProductsService,private userServer:UserService) { }
+  constructor(private server: ProductsService, private userServer: UserService) { }
 
 
-  products:any=''
-  Role=false
- 
+  products: any = ''
+  Role = false
+  islogged:boolean=false
+
   ngOnInit(): void {
 
     this.userServer.User(sessionStorage.getItem('token')).subscribe((res: any) => {
 
-      console.log(res)
-      
-     
-      res.data[0].Role=='Admin'?this.Role=true:this.Role=false
+      if (res.status === 500) {
+
+
+
+
+      } else {
+        
+    if(sessionStorage.getItem('token'))
+    {
+
+      this.islogged=true
+
+
+    }else{
+
+      this.islogged=false
+
   
-    }, err => {
-      console.log(err)
-   
+      
+    }
+
+
+        res.data[0].Role == 'Admin' ? this.Role = true : this.Role = false
+
+      }
+
     })
 
     this.GetProducts()
   }
 
 
-  GetProducts(){
+  GetProducts() {
 
 
     this.server.Getproducts()
-    .subscribe((res:any)=>{
+      .subscribe((res: any) => {
 
-      console.log(res)
+       
 
-      this.products=res.productsData
+        this.products = res.productsData
 
 
-    })
+      })
 
 
   }
 
-  OrderProduct(){
 
-
-    
-
-  }
 
 }
 
 
 
 
-export interface product{
-  ProductName:string
-  ProductImage:string,
- 
+export interface product {
+  ProductName: string
+  ProductImage: string,
+
 }

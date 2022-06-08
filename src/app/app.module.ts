@@ -6,6 +6,7 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { CartOrdersComponent } from './cart-orders/cart-orders.component';
 
 
 const config: SocketIoConfig = { url: 'https://freshwaterfish91.herokuapp.com/',
@@ -14,6 +15,7 @@ const config: SocketIoConfig = { url: 'https://freshwaterfish91.herokuapp.com/',
   declarations: [
     AppComponent,
     routingComponents,
+    CartOrdersComponent,
   ],
   imports: [
     BrowserModule,

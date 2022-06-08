@@ -30,83 +30,31 @@ export class OrdersComponent implements OnInit {
 
     console.log(history.state)
 
-if(history.state.g)
-{
-
-  console.log("history 1")
-  this.item = history.state.g
-  this.ItemImage=history.state.g.FishImg
-  this.itemName=history.state.g.FishName
-  this.itemPrice=history.state.g.fish_Price
-
-
-  
-}else if(history.state.p){
-
-this.item=history.state.p
-
-this.ItemImage=history.state.p.productImg
-this.itemName=history.state.p.productName
-this.itemDetails=history.state.p.Details
-this.itemPrice=history.state.p.product_Price
-
-
-}else{
-  
-  this.item=false
-  console.log("history 2")
-
-}
-
     this.loggedUser()
     this.GetOrders();
   }
 
   loggedUser() {
+ 
     this.UserService.User(sessionStorage.getItem('token')).subscribe((res: any) => {
-      this.user = res[0]
-       this.order.UserId = this.user.id
 
-    })
+      if(res.status===500)
+      {
 
-  }
-
-
-  OrderFish(item: fish) {
-
-    console.log(item)
-    this.order.FishId = item.id
-
-    console.log(this.quantity)
-    console.log(this.order)
-    this.OrderService.Insertorders(this.order,this.quantity).subscribe((res: any) => {
-
-     
-
-      if (res.status === 500) {
+this.router.navigate(['home'])
+      }else{
 
 
-
-      } else {
-
-this.message="Order Submited"
-
-
-setTimeout(()=>{
-
-
-       this.router.navigate(['home'])
-
-
-},3000)
-        console.log(res)
+        this.user = res[0]
+         this.order.UserId = this.user.id
 
       }
 
-
     })
 
   }
+
+
 
   GetOrders() {
 

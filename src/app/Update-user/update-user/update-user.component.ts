@@ -40,14 +40,14 @@ export class UpdateUserComponent implements OnInit {
       password2: new FormControl('')
     })
 
-    console.log(history.state.user)
+
 
   }
 
 
   UpdateUser(data: any) {
 
-    console.log(data)
+    
 
 
 
@@ -60,7 +60,6 @@ export class UpdateUserComponent implements OnInit {
 
         } else {
 
-console.log(res)
 
 this.message="Profile Updated"
 this.error=""

@@ -21,9 +21,11 @@
                 
                             <img class="rounded mx-auto d-block p-2 " src={{p.productImg}}>
                 
-                            <button class="btn btn-primary rounded-bottom rounded-0" [routerLink]="['/orders']" [state]="{p}">order</button>
+                            <button class="btn btn-primary rounded-bottom rounded-0" *ngIf="islogged" [routerLink]="['/cart']" [state]="{p}">Add to Cart</button>
                 
-                
+                            <button class="btn btn-primary w-auto rounded-bottom rounded-0" *ngIf="!islogged" [routerLink]="['/login']">Add to 
+                                cart</button>
+                        
                 
                 
                         </div>

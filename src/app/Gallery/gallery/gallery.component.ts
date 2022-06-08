@@ -22,6 +22,7 @@ connectedUser:any
 
 
     this.GetFishs()
+    this.OrderFish()
 
 
   }
@@ -33,6 +34,8 @@ connectedUser:any
     {
 
       this.islogged=true
+
+
     }else{
 
       this.islogged=false
@@ -40,8 +43,6 @@ connectedUser:any
   
       
     }
-    
-    
   }
 
   
@@ -49,7 +50,6 @@ connectedUser:any
 
     this.server.GetGalleries().subscribe((res: any) => {
 
-      console.log(res)
       this.galleries = res.galleryData
 
     })
