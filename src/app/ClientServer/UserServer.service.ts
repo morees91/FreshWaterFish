@@ -13,6 +13,7 @@ private updateUser_Url='https://freshwaterfish91.herokuapp.com/users/update-user
 private updateRole_Url='https://freshwaterfish91.herokuapp.com/users/update-role'
 private getUsers_Url='https://freshwaterfish91.herokuapp.com/users/get-users'
 private get_contactUs='https://freshwaterfish91.herokuapp.com/users/get-contactUs'
+private contact_us='https://freshwaterfish91.herokuapp.com/users/contact-us'
 private logout_Url='https://freshwaterfish91.herokuapp.com/users/logout'
 private user_url='https://freshwaterfish91.herokuapp.com/users/user'
 private deleteUser_url='https://freshwaterfish91.herokuapp.com/users/delete-user'
@@ -103,7 +104,7 @@ formParams.append('role',Role)
 
   ContactUs(contact: contacts) {
 
-    return this.http.post<any>('https://freshwaterfish91.herokuapp.com//users/contact-us', {
+    return this.http.post<any>(this.contact_us, {
       Email: contact.Email,
       Subject: contact.Subject,
       PhoneNumber: contact.PhoneNumber,
