@@ -38,14 +38,14 @@ export class OrdersComponent implements OnInit {
  
     this.UserService.User(sessionStorage.getItem('token')).subscribe((res: any) => {
 
-      if(res.status===500)
+      if(res.status==500)
       {
 
 this.router.navigate(['home'])
       }else{
 
 
-        this.user = res[0]
+        this.user = res.data[0]
          this.order.UserId = this.user.id
 
       }

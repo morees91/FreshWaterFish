@@ -41,7 +41,7 @@ this.router.navigate(['home'])
 
 
 
-        if (user[0].Role == 'Admin') {
+        if (user.data[0].Role == 'Admin') {
   
           this.IsAdmin = true
         } else {
