@@ -11,6 +11,10 @@ import { CartOrdersComponent } from './cart-orders/cart-orders.component';
 
 const config: SocketIoConfig = { url: 'https://freshwaterfish91.herokuapp.com/',
  options: { } };
+
+
+// const config: SocketIoConfig = { url: 'http://localhost:3000',
+//  options: { } };
 @NgModule({
   declarations: [
     AppComponent,

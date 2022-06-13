@@ -46,6 +46,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
     })
 
+    this.socket.on('room_id', (id: any) => {
+
+    console.log(id)
+this.chatList=[]
+    this.chat.room_Id=id
+
+    })
+
   }
 
   ngAfterViewChecked(): void {
@@ -99,49 +107,61 @@ if(res.status===500)
   }
 
 
-  SelectUser(user: any) {
-
-  
+  SelectUser(Selecteduser: any) {
 
 
-    this.SenderName = user.FirstName
-    this.chat.ReceiverId = user.id
-    this.chat.receiver = user.FirstName + " " + user.LastName
-    this.chat.Email = user.Email
+
+    this.SenderName = Selecteduser.FirstName
+    this.chat.ReceiverId = Selecteduser.id
+    this.chat.receiver = Selecteduser.FirstName + " " + Selecteduser.LastName
+    this.chat.Email = Selecteduser.Email
+    this.chatserver.selectedUser( this.chat.SenderId,this.chat.ReceiverId)
+    console.log(Selecteduser)
+    console.log(this.chat.SenderId)
+    console.log(this.chat.ReceiverId)
+
+    console.log(this.chatList)
     this.getChatList();
-    this.filterChatList = this.chatList.filter(user => this.chat.ReceiverId == user.ReceiverId || user.ReceiverId == this.chat.SenderId)
+    console.log(this.chat.room_Id)
 
-    this.chatserver.selectedUser(user.id)
+    
+
+    console.log(this.filterChatList)
 
 
+this.getChatList()
 
   }
 
-  onchange(user: any) {
+  // onchange(user: any) {
 
 
 
-    this.SenderName = user.FirstName
-    this.chat.ReceiverId = user.id
+  //   this.SenderName = user.FirstName
+  //   this.chat.ReceiverId = user.id
 
-    this.getChatList();
-    this.filterChatList = this.chatList.filter(user => this.chat.ReceiverId === user.ReceiverId || user.ReceiverId == this.chat.SenderId)
+  //   this.getChatList();
+  //   this.filterChatList = this.chatList.filter(user => this.chat.ReceiverId === user.ReceiverId || user.ReceiverId == this.chat.SenderId)
 
-    this.chatserver.selectedUser(this.chat.ReceiverId)
-
-
+  //   this.chatserver.selectedUser(this.chat.ReceiverId)
 
 
 
-  }
+
+
+  // }
 
 
   getChatList() {
-
+//get chat list
     this.chatserver.GetChatList().subscribe((res: any) => {
 
 
       this.chatList = res.ChatData
+
+      
+    this.filterChatList = this.chatList.filter(user => this.chat.room_Id==user.room_Id)
+
 
     }
     )
@@ -205,6 +225,7 @@ export interface chat {
   SenderId: number
   Email: String
   ReceiverId: number
+  room_Id:number
   Message: String
   TimeStamp: String,
   sender: String,

@@ -45,6 +45,42 @@
 </div>
 
 
+
+<div class="row m-5"  *ngIf="clicked">
+  <div class="col-md text-center">
+
+    <button class="btn btn-danger m-2" (click)="DeleteUser()">Delete</button>
+
+    <button class="btn btn-secondary m-2" (click)="cancelDeleteButton()">cancel</button>
+
+    <div class="row">
+
+
+      <div class="col-md" *ngIf="IsAdmin">
+        <select class="form-select" aria-label="Default select example" id="Role" name="Role"
+          (ngModelChange)="onchange($event)" [(ngModel)]="Role">
+          <option value="">select User</option>
+          <option value='Admin'>Admin</option>
+          <option value='customer'>Customer</option>
+
+
+        </select>
+
+        <div class="col-md">
+          <p>{{message}}</p>
+        </div>
+
+      </div>
+
+      <div class="col-md">
+        <button *ngIf="IsAdmin" class="btn btn-primary m-2" (click)="UpdateRole()">Update User</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
 <div class="row m-5">
   <div class="col-md">
 
@@ -81,38 +117,4 @@
     </div>
   </div>
 
-</div>
-<div class="row" *ngIf="clicked">
-  <div class="col-md text-center">
-
-    <button class="btn btn-danger m-2" (click)="DeleteUser()">Delete</button>
-
-    <button class="btn btn-secondary m-2" (click)="cancelDeleteButton()">cancel</button>
-
-    <div class="row">
-
-
-      <div class="col-md" *ngIf="IsAdmin">
-        <select class="form-select" aria-label="Default select example" id="Role" name="Role"
-          (ngModelChange)="onchange($event)" [(ngModel)]="Role">
-          <option value="">select User</option>
-          <option value='Admin'>Admin</option>
-          <option value='customer'>Customer</option>
-
-
-        </select>
-
-        <div class="col-md">
-          <p>{{message}}</p>
-        </div>
-
-      </div>
-
-      <div class="col-md">
-        <button *ngIf="IsAdmin" class="btn btn-primary m-2" (click)="UpdateRole()">Update User</button>
-      </div>
-    </div>
-
-
-  </div>
 </div>

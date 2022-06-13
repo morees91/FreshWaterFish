@@ -43,10 +43,10 @@ this.socket.emit('connection')
     })
   }
 
-  selectedUser(SelectedUser:any){
+  selectedUser(senderId:number,ReceiverId:any){
 
 
-    this.socket.emit('selectedUser',SelectedUser)
+    this.socket.emit('selectedUser',senderId,ReceiverId)
 
   }
 

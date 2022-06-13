@@ -72,7 +72,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-          if (response.status === 500) {
+          if (response.status == 500) {
 
             this.Error = response.Message
 
@@ -82,12 +82,19 @@ export class RegisterComponent implements OnInit {
             this.Error = ""
 
             this.message = 'User Registed'
-            setTimeout(() => {
 
-              this.router.navigate(['login'])
+            if(response.status=200)
+            {
+
+              setTimeout(() => {
+  
+                this.router.navigate(['login'])
+  
+  
+              }, 3000)
 
 
-            }, 3000)
+            }
 
 
           }

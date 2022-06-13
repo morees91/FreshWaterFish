@@ -28,7 +28,6 @@ export class OrdersComponent implements OnInit {
   user = <user>{}
   ngOnInit(): void {
 
-    console.log(history.state)
 
     this.loggedUser()
     this.GetOrders();
@@ -64,7 +63,7 @@ this.router.navigate(['home'])
 this.OrderList=res.ordersData
 
 
-      console.log(this.OrderList)
+    
 
 
 

@@ -2,6 +2,7 @@ import { user } from './../../Login/login/login.component';
 import { UserService } from 'src/app/ClientServer/UserServer.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -12,13 +13,13 @@ export class UsersComponent implements OnInit {
 
 
   userList: any
-  contactUsList:any
+  contactUsList: any
   clicked: any
   IsAdmin: boolean = false
   clickedUser = <user>{}
   Role: string = ""
-  message:string=""
-  constructor(private server: UserService,private router:Router) { }
+  message: string = ""
+  constructor(private server: UserService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -32,20 +33,19 @@ export class UsersComponent implements OnInit {
 
     this.server.User(sessionStorage.getItem('token')).subscribe((user: any) => {
 
-      if(user.status===500)
-      {
+      if (user.status === 500) {
 
-this.router.navigate(['home'])
+        this.router.navigate(['home'])
 
-      }else{
+      } else {
 
 
 
         if (user.data[0].Role == 'Admin') {
-  
+
           this.IsAdmin = true
         } else {
-  
+
           this.IsAdmin = false
         }
 
@@ -58,16 +58,18 @@ this.router.navigate(['home'])
   }
 
 
-  GetContactUs(){
+  GetContactUs() {
 
-this.server.GetContactUs().subscribe((res:any)=>{
+    this.server.GetContactUs().subscribe((res: any) => {
 
 
-  this.contactUsList=res.contactsData
+      this.contactUsList = res.contactsData
+      this.message = ""
+      this.clicked=false
 
-})
+    })
 
-    
+
   }
 
 
@@ -76,19 +78,22 @@ this.server.GetContactUs().subscribe((res:any)=>{
 
 
     this.server.updateRole(this.clickedUser, this.clickedUser.id).subscribe(res => {
+      this.message = res.message
+      setTimeout(() => {
+        
+              this.GetContactUs()
 
-      this.message= res.message
-
+      }, 3000)
     })
-   
+
   }
 
 
   onchange(role: string) {
 
-    
+
     this.clickedUser.Role = role
-    
+
 
 
   }
@@ -97,7 +102,7 @@ this.server.GetContactUs().subscribe((res:any)=>{
 
     this.server.GetUsers().subscribe((res: any) => {
 
-      
+
       this.userList = res.UsersData
 
 
@@ -110,7 +115,7 @@ this.server.GetContactUs().subscribe((res:any)=>{
   clickeduser(user: user) {
     this.clickedUser = user
 
-   
+
     this.Role = this.clickedUser.Role
     this.clicked = true
 
@@ -122,9 +127,17 @@ this.server.GetContactUs().subscribe((res:any)=>{
 
     this.server.Deleteuser(this.clickedUser).subscribe(res => {
 
-     
+console.log(res)
 
-      this.GetUsers()
+this.message="All info Deleted"
+setTimeout(()=>{
+
+
+  this.GetUsers()
+  this.clicked=false
+
+},3000)
+
 
 
     })

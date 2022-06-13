@@ -39,7 +39,7 @@
                     <div class="col-md chatBody" #scrollBottom>
 
 
-                        <div class="card message" *ngFor="let m of filterChatList" (click)="selectedMessage(m)">
+                        <div class="card message" *ngFor="let m of filterChatList">
 
                             <div class="card-header SenderOrReceiver">{{m.sender}}</div>
 
