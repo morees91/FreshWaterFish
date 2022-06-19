@@ -39,7 +39,8 @@ export class RegisterComponent implements OnInit {
         Validators.email
       ])),
       Password: new FormControl(""),
-      Password2: new FormControl('')
+      Password2: new FormControl(''),
+      image:new FormControl('')
     })
 
 
@@ -88,7 +89,7 @@ export class RegisterComponent implements OnInit {
 
               setTimeout(() => {
   
-                this.router.navigate(['login'])
+               this.router.navigate(['login'])
   
   
               }, 3000)

@@ -14,6 +14,7 @@ export class UsersComponent implements OnInit {
 
   userList: any
   contactUsList: any
+  currentUser=<user>{}
   clicked: any
   IsAdmin: boolean = false
   clickedUser = <user>{}
@@ -39,7 +40,9 @@ export class UsersComponent implements OnInit {
 
       } else {
 
+        console.log(user.data[0])
 
+this.currentUser=user.data[0]
 
         if (user.data[0].Role == 'Admin') {
 
@@ -125,7 +128,7 @@ export class UsersComponent implements OnInit {
 
   DeleteUser() {
 
-    this.server.Deleteuser(this.clickedUser).subscribe(res => {
+    this.server.Deleteuser(this.clickedUser,this.currentUser).subscribe(res => {
 
 console.log(res)
 

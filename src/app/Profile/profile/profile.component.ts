@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit,OnChanges {
    
   }
   user = <any>{}
-
+Image:string='';
   
   ngOnInit(): void {
 
@@ -41,7 +41,7 @@ this.userServe.User(sessionStorage.getItem('token')).subscribe( (res:any) => {
 
   }
   this.user=res.data[0]
-  this.user.Image='https://freshwaterfish.s3.eu-west-2.amazonaws.com/'+res.data[0].Image
+  console.log(this.user)
   
 }) 
 

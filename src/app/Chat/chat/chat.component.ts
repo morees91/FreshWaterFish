@@ -67,6 +67,8 @@ this.chatList=[]
 
   
       this.users = res.UsersData;
+
+      console.log(res)
       
 
       this.filterdList = this.users.filter(user => user.id !== this.chat.SenderId)
@@ -162,6 +164,8 @@ this.getChatList()
       
     this.filterChatList = this.chatList.filter(user => this.chat.room_Id==user.room_Id)
 
+
+    console.log( res.ChatData)
 
     }
     )

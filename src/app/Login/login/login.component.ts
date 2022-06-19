@@ -68,7 +68,8 @@ export interface user {
   Password: string
   Password2: string
   Role: string
-  Image: string
+  Image: string,
+  img:string
 
 
 
