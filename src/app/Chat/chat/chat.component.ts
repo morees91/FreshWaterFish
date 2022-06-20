@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { user } from './../../Login/login/login.component';
 import { UserService } from '../../ClientServer/UserServer.service';
-import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, Component, ContentChild, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { ChatServerService } from 'src/app/ClientServer/chat-server.service';
 import { SocketIoConfig } from 'ngx-socket-io';
 import { Socket } from 'ngx-socket-io';
@@ -16,11 +16,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
 
   }
-
-
+ 
   @ViewChild('scrollBottom')
   private scrollBottom!: ElementRef;
   message: string = ''
+  usermessageId:string=''
   users: user[] = []
   filterdList: user[] = []
   ShowChat: boolean = false
@@ -41,14 +41,15 @@ export class ChatComponent implements OnInit, AfterViewChecked {
     this.scrollToBottom();
     this.socket.on('new_message', (data: any) => {
 
-      this.ReceviedMessage = data
-      this.filterChatList.push(data)
+      
+          this.ReceviedMessage = data
+          this.filterChatList.push(data)
 
+      
     })
 
     this.socket.on('room_id', (id: any) => {
 
-    console.log(id)
 this.chatList=[]
     this.chat.room_Id=id
 
@@ -68,7 +69,6 @@ this.chatList=[]
   
       this.users = res.UsersData;
 
-      console.log(res)
       
 
       this.filterdList = this.users.filter(user => user.id !== this.chat.SenderId)
@@ -112,46 +112,23 @@ if(res.status===500)
   SelectUser(Selecteduser: any) {
 
 
-
     this.SenderName = Selecteduser.FirstName
     this.chat.ReceiverId = Selecteduser.id
     this.chat.receiver = Selecteduser.FirstName + " " + Selecteduser.LastName
     this.chat.Email = Selecteduser.Email
     this.chatserver.selectedUser( this.chat.SenderId,this.chat.ReceiverId)
-    console.log(Selecteduser)
-    console.log(this.chat.SenderId)
-    console.log(this.chat.ReceiverId)
-
-    console.log(this.chatList)
+   
+   
     this.getChatList();
-    console.log(this.chat.room_Id)
+   
 
     
-
-    console.log(this.filterChatList)
 
 
 this.getChatList()
 
   }
 
-  // onchange(user: any) {
-
-
-
-  //   this.SenderName = user.FirstName
-  //   this.chat.ReceiverId = user.id
-
-  //   this.getChatList();
-  //   this.filterChatList = this.chatList.filter(user => this.chat.ReceiverId === user.ReceiverId || user.ReceiverId == this.chat.SenderId)
-
-  //   this.chatserver.selectedUser(this.chat.ReceiverId)
-
-
-
-
-
-  // }
 
 
   getChatList() {
@@ -165,7 +142,6 @@ this.getChatList()
     this.filterChatList = this.chatList.filter(user => this.chat.room_Id==user.room_Id)
 
 
-    console.log( res.ChatData)
 
     }
     )

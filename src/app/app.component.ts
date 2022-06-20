@@ -31,12 +31,14 @@ export class AppComponent {
 
   ngOnInit(): void {
 
-   
+ 
 
     this.server.User(sessionStorage.getItem('token'))
     .subscribe((res: any) => {
 
       this.chatserver.connectedUser(res)
+
+      
       if(res.status==200)
       {
         
@@ -61,6 +63,11 @@ export class AppComponent {
       }
     )
   }
+
+
+  RemoveBadge(){
+  
+  }
   Logout() {
 
 
@@ -78,7 +85,7 @@ export class AppComponent {
           sessionStorage.removeItem('token')
           window.location.reload()
           this.getUser()
-          // this.router.navigate(['home'])
+         
         }
 
 

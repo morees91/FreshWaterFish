@@ -41,7 +41,7 @@ this.userServe.User(sessionStorage.getItem('token')).subscribe( (res:any) => {
 
   }
   this.user=res.data[0]
-  console.log(this.user)
+
   
 }) 
 

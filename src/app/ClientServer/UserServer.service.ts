@@ -117,9 +117,6 @@ formParams.append('role',Role)
 
 Deleteuser(data:any,currentUser:any){
 
-console.log(data)
-console.log(currentUser)
-
 
  return this.http.delete<user>(this.deleteUser_url,{params:{'userid':data.id,'currentUser':currentUser.id}})
 

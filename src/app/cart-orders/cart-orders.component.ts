@@ -36,7 +36,7 @@ export class CartOrdersComponent implements OnInit {
 
     if (history.state.g) {
       this.item = true
-      console.log("history 1")
+    
       this.cartitem.item = history.state.g
 
       this.cartitem.ItemImage = history.state.g.FishImg
@@ -54,7 +54,6 @@ export class CartOrdersComponent implements OnInit {
 
       this.item = true
 
-      console.log(history.state.p)
       this.cartitem.item = history.state.p
 
       this.cartitem.ItemImage = history.state.p.productImg
@@ -168,7 +167,7 @@ export class CartOrdersComponent implements OnInit {
 
 
         }, 3000)
-        console.log(res)
+       
 
       }
 
@@ -182,7 +181,7 @@ export class CartOrdersComponent implements OnInit {
   loggedUser() {
     this.UserService.User(sessionStorage.getItem('token')).subscribe((res: any) => {
 
-      console.log(res)
+      
       if (res.status === 500) {
 
         this.router.navigate(['home'])

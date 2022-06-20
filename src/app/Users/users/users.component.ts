@@ -40,7 +40,7 @@ export class UsersComponent implements OnInit {
 
       } else {
 
-        console.log(user.data[0])
+    
 
 this.currentUser=user.data[0]
 
@@ -130,7 +130,7 @@ this.currentUser=user.data[0]
 
     this.server.Deleteuser(this.clickedUser,this.currentUser).subscribe(res => {
 
-console.log(res)
+
 
 this.message="All info Deleted"
 setTimeout(()=>{
